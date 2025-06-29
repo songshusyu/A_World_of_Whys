@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 测试页面 - A World of Whys</title>
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 自定义CSS -->
+    <style>
+        .test-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 2px dashed #6366f1;
+            border-radius: 8px;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏测试 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">🐱 A World of Whys</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">问答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">学习</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center text-primary mb-4">Bootstrap 框架测试</h1>
+
+        <!-- 网格系统测试 -->
+        <div class="test-section">
+            <h3>📐 网格系统测试</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="bg-primary text-white p-3 rounded">左列 (col-md-6)</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-secondary text-white p-3 rounded">右列 (col-md-6)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 按钮测试 -->
+        <div class="test-section">
+            <h3>🔘 按钮样式测试</h3>
+            <button class="btn btn-primary me-2">主要按钮</button>
+            <button class="btn btn-secondary me-2">次要按钮</button>
+            <button class="btn gradient-btn me-2">渐变按钮</button>
+            <button class="btn btn-outline-primary">轮廓按钮</button>
+        </div>
+
+        <!-- 卡片测试 -->
+        <div class="test-section">
+            <h3>🃏 卡片组件测试</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">🤖 人工智能</h5>
+                            <p class="card-text">探索人工智能的奥秘，了解机器学习的基本原理。</p>
+                            <a href="#" class="btn btn-primary">开始学习</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">🔬 科学探索</h5>
+                            <p class="card-text">深入科学世界，发现自然界的神奇现象。</p>
+                            <a href="#" class="btn btn-primary">开始学习</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">📚 历史文化</h5>
+                            <p class="card-text">回顾历史长河，了解人类文明的发展历程。</p>
+                            <a href="#" class="btn btn-primary">开始学习</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单测试 -->
+        <div class="test-section">
+            <h3>📝 表单组件测试</h3>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="请输入你的问题..." id="testSearch">
+                        <button class="btn gradient-btn" type="button" id="testSearchBtn">🔍 搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 警告框测试 -->
+        <div class="test-section">
+            <h3>⚠️ 警告框测试</h3>
+            <div class="alert alert-success" role="alert">
+                ✅ Bootstrap框架加载成功！
+            </div>
+            <div class="alert alert-info" role="alert">
+                ℹ️ 这是一个信息提示框。
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JavaScript CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 测试JavaScript功能 -->
+    <script>
+        // 测试搜索按钮点击
+        document.getElementById('testSearchBtn').addEventListener('click', function () {
+            const searchValue = document.getElementById('testSearch').value;
+            if (searchValue.trim()) {
+                alert('搜索内容: ' + searchValue);
+            } else {
+                alert('请输入搜索内容！');
+            }
+        });
+
+        // 测试回车键搜索
+        document.getElementById('testSearch').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById('testSearchBtn').click();
+            }
+        });
+
+        console.log('Bootstrap JavaScript 加载成功！');
+    </script>
+</body>
+
+</html>

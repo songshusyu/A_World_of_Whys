@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习中心 - A World of Whys</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- 自定义CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .learning-container {
+            min-height: calc(100vh - 180px);
+        }
+
+        .course-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .progress-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .achievement-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.1);
+        }
+
+        .achievement-badge i {
+            font-size: 2rem;
+            color: #0d6efd;
+        }
+
+        .learning-stats {
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin-bottom: 15px;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-item {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #dee2e6;
+            transition: background-color 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #f8f9fa;
+        }
+
+        .progress-small {
+            height: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="brand-icon">🐱</span>
+                <span class="brand-text">A World of Whys</span>
+                <small class="brand-subtitle">十万个为什么</small>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-door"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-book"></i> 学习中心</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> 关于我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="container py-4">
+        <div class="learning-container">
+            <div class="row">
+                <!-- 左侧学习进度 -->
+                <div class="col-lg-4">
+                    <div class="progress-card">
+                        <h4><i class="bi bi-person-circle"></i> 学习概览</h4>
+                        <div class="learning-stats mt-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>总学习时长</span>
+                                <span class="text-primary">12小时</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>已完成课程</span>
+                                <span class="text-success">8节</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>获得成就</span>
+                                <span class="text-warning">5个</span>
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">成就徽章</h5>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <div class="achievement-badge" title="完成第一课">
+                                <i class="bi bi-1-circle"></i>
+                            </div>
+                            <div class="achievement-badge" title="连续学习3天">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <div class="achievement-badge" title="首次提问">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-card">
+                        <h4><i class="bi bi-clock-history"></i> 最近学习</h4>
+                        <div class="topic-list">
+                            <div class="topic-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Python基础入门</h6>
+                                    <span class="badge bg-success">已完成</span>
+                                </div>
+                                <div class="progress progress-small">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">数据结构基础</h6>
+                                    <span class="badge bg-primary">进行中</span>
+                                </div>
+                                <div class="progress progress-small">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧课程列表 -->
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <h3>推荐课程</h3>
+                        </div>
+                        
+                        <!-- 课程卡片 -->
+                        <div class="col-md-6">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/python/400/200" class="course-image" alt="Python编程">
+                                <div class="card-body">
+                                    <h5 class="card-title">Python编程基础</h5>
+                                    <p class="card-text">从零开始学习Python编程，包含基础语法、数据结构等内容</p>
+                                    <div class="progress mb-3" style="height: 5px;">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">已完成 75%</small>
+                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/ai/400/200" class="course-image" alt="人工智能">
+                                <div class="card-body">
+                                    <h5 class="card-title">人工智能导论</h5>
+                                    <p class="card-text">了解人工智能的基本概念、发展历史和应用领域</p>
+                                    <div class="progress mb-3" style="height: 5px;">
+                                        <div class="progress-bar" style="width: 30%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">已完成 30%</small>
+                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/algorithm/400/200" class="course-image" alt="算法">
+                                <div class="card-body">
+                                    <h5 class="card-title">算法与数据结构</h5>
+                                    <p class="card-text">深入学习常用算法和数据结构的原理与实现</p>
+                                    <div class="progress mb-3" style="height: 5px;">
+                                        <div class="progress-bar" style="width: 45%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">已完成 45%</small>
+                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/web/400/200" class="course-image" alt="Web开发">
+                                <div class="card-body">
+                                    <h5 class="card-title">Web开发实战</h5>
+                                    <p class="card-text">学习现代Web开发技术，从前端到后端的完整实践</p>
+                                    <div class="progress mb-3" style="height: 5px;">
+                                        <div class="progress-bar" style="width: 15%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">已完成 15%</small>
+                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer bg-light mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>A World of Whys</h5>
+                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">
+                        © 2024 A World of Whys. 探索无限可能.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

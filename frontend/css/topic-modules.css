@@ -1,0 +1,286 @@
+/* Topic Modules 页面专用样式 */
+
+/* 主题标题区域 */
+.topic-header {
+    background: var(--bg-gradient);
+    padding: 2rem 0 1.5rem;
+}
+
+.topic-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.topic-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+/* 版块选择区域 */
+.modules-section {
+    padding: 3rem 0;
+}
+
+.loading-container {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.loading-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.error-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 版块网格 */
+.modules-grid {
+    margin-bottom: 3rem;
+}
+
+.module-card {
+    background: var(--bg-primary);
+    border: 2px solid var(--bg-light);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.module-card:hover::before {
+    transform: scaleX(1);
+}
+
+.module-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.module-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.module-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+}
+
+.module-action {
+    margin-top: auto;
+}
+
+.module-action .btn {
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.module-action .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* 学习提示区域 */
+.learning-tips {
+    padding: 2rem 0;
+    background: var(--bg-secondary);
+}
+
+.tips-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.tips-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tip-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.tip-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.tip-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.tip-item p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .topic-header {
+        padding: 1.5rem 0 1rem;
+    }
+    
+    .topic-title {
+        font-size: 1.75rem;
+    }
+    
+    .modules-section {
+        padding: 2rem 0;
+    }
+    
+    .module-card {
+        padding: 1.5rem;
+    }
+    
+    .module-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .module-title {
+        font-size: 1.25rem;
+    }
+    
+    .tips-card {
+        padding: 1.5rem;
+    }
+    
+    .tip-icon {
+        font-size: 2rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.module-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.module-card:nth-child(1) { animation-delay: 0.1s; }
+.module-card:nth-child(2) { animation-delay: 0.2s; }
+.module-card:nth-child(3) { animation-delay: 0.3s; }
+.module-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* 主题特色图标样式 */
+.module-card[data-icon="book"] .module-icon::before {
+    content: "📚";
+}
+
+.module-card[data-icon="tools"] .module-icon::before {
+    content: "🛠️";
+}
+
+.module-card[data-icon="graph-up"] .module-icon::before {
+    content: "📈";
+}
+
+.module-card[data-icon="rocket"] .module-icon::before {
+    content: "🚀";
+}
+
+.module-card[data-icon="lightbulb"] .module-icon::before {
+    content: "💡";
+}
+
+.module-card[data-icon="gear"] .module-icon::before {
+    content: "⚙️";
+}
+
+.module-card[data-icon="trophy"] .module-icon::before {
+    content: "🏆";
+}
+
+.module-card[data-icon="target"] .module-icon::before {
+    content: "🎯";
+}

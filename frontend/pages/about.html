@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - A World of Whys</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- 自定义CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .about-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #6c757d;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #0d6efd;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .project-features {
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: #e9ecef;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            border-left: 2px solid #0d6efd;
+            position: relative;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 24px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="brand-icon">🐱</span>
+                <span class="brand-text">A World of Whys</span>
+                <small class="brand-subtitle">十万个为什么</small>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-door"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="learn.html"><i class="bi bi-book"></i> 学习中心</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-info-circle"></i> 关于我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main>
+        <!-- 个人介绍部分 -->
+        <section class="about-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="about-card text-center">
+                            <img src="https://avatars.githubusercontent.com/songshusyu" alt="徐鹤松" class="profile-image">
+                            <h2 class="mb-3">徐鹤松</h2>
+                            <p class="lead text-muted">北京邮电大学 计算机科学与技术专业</p>
+                            <p class="mb-4">研究兴趣：机器学习、人工智能、Web开发</p>
+                            
+                            <div class="social-links">
+                                <a href="https://github.com/songshusyu" target="_blank" title="GitHub">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                <a href="https://songshusyu.com" target="_blank" title="个人博客">
+                                    <i class="bi bi-journal-text"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目介绍部分 -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="about-card">
+                            <h3><i class="bi bi-lightbulb"></i> 项目愿景</h3>
+                            <p class="lead">打造新一代交互式知识学习引擎</p>
+                            <p>智喵学堂致力于通过AI技术革新教育方式，让学习变得更加智能和有趣。我们希望通过技术的力量，让每个人都能享受到优质的教育资源。</p>
+                            
+                            <div class="tech-stack">
+                                <span class="tech-badge">Spring Boot</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">通义千问API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="about-card">
+                            <h3><i class="bi bi-gear"></i> 核心功能</h3>
+                            <div class="project-features">
+                                <div class="feature-item">
+                                    <h5><i class="bi bi-robot"></i> AI智能问答</h5>
+                                    <p>基于通义千问API，提供智能、准确的问答服务</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h5><i class="bi bi-book"></i> 个性化学习</h5>
+                                    <p>根据学习进度和兴趣推荐合适的学习内容</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h5><i class="bi bi-graph-up"></i> 学习追踪</h5>
+                                    <p>记录和分析学习过程，提供学习建议</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 发展历程 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="about-card">
+                            <h3><i class="bi bi-clock-history"></i> 发展历程</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h5>2024年6月</h5>
+                                    <p>项目启动，基于智喵学堂的理念进行开发</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>2024年6月中旬</h5>
+                                    <p>完成核心功能开发，包括AI问答系统和学习追踪</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>2024年6月底</h5>
+                                    <p>项目上线，持续优化和更新</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer bg-light mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>A World of Whys</h5>
+                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">
+                        © 2024 A World of Whys. 探索无限可能.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

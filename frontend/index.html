@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A World of Whys - 十万个为什么 | 新一代交互式知识学习引擎</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- 自定义CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <span class="brand-icon">🐱</span>
+                <span class="brand-text">A World of Whys</span>
+                <small class="brand-subtitle">十万个为什么</small>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> 首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/learn.html"><i class="bi bi-book"></i> 学习中心</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/about.html"><i class="bi bi-info-circle"></i> 关于我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main>
+        <!-- 标题区域 -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title">新一代交互式知识学习引擎</h1>
+                        <p class="hero-subtitle">探索无限可能，解答心中疑问</p>
+                        <div class="hero-badges">
+                            <span class="badge bg-primary">AI驱动</span>
+                            <span class="badge bg-success">实时问答</span>
+                            <span class="badge bg-info">个性化学习</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索区域 -->
+        <section class="search-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="search-container">
+                            <div class="search-input-group">
+                                <input type="text" class="form-control search-input" placeholder="请输入你的问题..."
+                                    id="mainSearchInput">
+                                <button class="btn btn-primary search-btn" type="button" id="mainSearchBtn">
+                                    <i class="bi bi-search"></i> 开始学习
+                                </button>
+                            </div>
+                            <p class="search-hint">
+                                <i class="bi bi-lightbulb"></i>
+                                尝试输入人工智能相关的问题，或者选择下方推荐主题
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐主题区域 -->
+        <section class="topics-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">热门推荐</h2>
+                        <p class="section-subtitle">精选学习主题，开启知识探索之旅</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- 左侧推荐 -->
+                    <div class="col-lg-6">
+                        <h3 class="topics-group-title">
+                            <i class="bi bi-star-fill text-warning"></i> 好奇推荐
+                        </h3>
+                        <div class="topics-list">
+                            <div class="topic-item" data-topic="机器学习">
+                                <div class="topic-icon">🤖</div>
+                                <div class="topic-content">
+                                    <h4>机器学习</h4>
+                                    <p>探索人工智能的核心，了解机器如何学习。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="世界奇观的历史">
+                                <div class="topic-icon">🏛️</div>
+                                <div class="topic-content">
+                                    <h4>世界奇观的历史</h4>
+                                    <p>穿越时空，探索人类文明的伟大奇迹。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="西游记中国古代文学史中的意义">
+                                <div class="topic-icon">📚</div>
+                                <div class="topic-content">
+                                    <h4>西游记中国古代文学史中的意义</h4>
+                                    <p>深入理解古典文学的深刻内涵和文化价值。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="如何创作一首音乐">
+                                <div class="topic-icon">🎵</div>
+                                <div class="topic-content">
+                                    <h4>如何创作一首音乐</h4>
+                                    <p>从灵感到作品，掌握音乐创作的艺术。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧推荐 -->
+                    <div class="col-lg-6">
+                        <h3 class="topics-group-title">
+                            <i class="bi bi-fire text-danger"></i> 大家都在搜
+                        </h3>
+                        <div class="topics-list">
+                            <div class="topic-item" data-topic="人工智能">
+                                <div class="topic-icon">🧠</div>
+                                <div class="topic-content">
+                                    <h4>人工智能</h4>
+                                    <p>人工智能如何改变我们的生活和工作方式。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="Python在数据分析中的应用">
+                                <div class="topic-icon">🐍</div>
+                                <div class="topic-content">
+                                    <h4>Python在数据分析中的应用</h4>
+                                    <p>Python编程，数据科学，机器学习，可视化。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="摄影法">
+                                <div class="topic-icon">📸</div>
+                                <div class="topic-content">
+                                    <h4>摄影法</h4>
+                                    <p>掌握摄影技巧，用镜头记录美好瞬间。</p>
+                                </div>
+                            </div>
+
+                            <div class="topic-item" data-topic="如何研究一个基础web基础的搭建">
+                                <div class="topic-icon">🌐</div>
+                                <div class="topic-content">
+                                    <h4>如何研究一个基础web基础的搭建</h4>
+                                    <p>Web开发基础，从零开始构建现代网站。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer bg-light mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>A World of Whys</h5>
+                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">
+                        © 2024 A World of Whys. 探索无限可能.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- API模块 -->
+    <script src="js/api.js"></script>
+    <!-- 自定义JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown渲染测试</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">📝 Markdown渲染测试</h1>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>🔧 测试控制面板</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Markdown文本：</label>
+                            <textarea id="markdownInput" class="form-control" rows="10" placeholder="输入Markdown文本进行测试...">
+# 这是一级标题
+
+## 这是二级标题
+
+### 这是三级标题
+
+这是普通段落文本。
+
+**这是粗体文本** 和 *这是斜体文本*
+
+`这是行内代码`
+
+```javascript
+// 这是代码块
+function hello() {
+    console.log("Hello World!");
+}
+```
+
+- 这是无序列表项1
+- 这是无序列表项2
+- 这是无序列表项3
+
+1. 这是有序列表项1
+2. 这是有序列表项2
+3. 这是有序列表项3
+
+[这是链接](https://example.com)
+
+---
+
+这是分割线上方的内容
+
+这是分割线下方的内容
+                            </textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" onclick="testMarkdown()">🎨 渲染Markdown</button>
+                            <button class="btn btn-success" onclick="testRealExample()">📖 测试实际AI回答</button>
+                            <button class="btn btn-warning" onclick="clearOutput()">🧹 清空输出</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>🎯 渲染结果</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="markdownOutput" class="answer-text" style="min-height: 400px;">
+                            <p class="text-muted">在左侧输入Markdown文本，然后点击"渲染Markdown"按钮查看效果。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <h6>🌟 支持的Markdown语法：</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><code># ## ###</code> - 标题</li>
+                                <li><code>**粗体**</code> - 粗体文本</li>
+                                <li><code>*斜体*</code> - 斜体文本</li>
+                                <li><code>`代码`</code> - 行内代码</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><code>```代码块```</code> - 代码块</li>
+                                <li><code>- 列表项</code> - 无序列表</li>
+                                <li><code>1. 列表项</code> - 有序列表</li>
+                                <li><code>[链接](URL)</code> - 链接</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 创建测试用的WhysApp实例
+        const testApp = new WhysApp();
+        
+        function testMarkdown() {
+            const input = document.getElementById('markdownInput').value;
+            const output = document.getElementById('markdownOutput');
+            
+            if (!input.trim()) {
+                output.innerHTML = '<p class="text-warning">请输入Markdown文本</p>';
+                return;
+            }
+            
+            try {
+                const renderedHtml = testApp.parseMarkdown(input);
+                output.innerHTML = renderedHtml;
+                
+                // 添加渲染成功提示
+                showToast('Markdown渲染成功！', 'success');
+            } catch (error) {
+                output.innerHTML = `<p class="text-danger">渲染失败: ${error.message}</p>`;
+                showToast('Markdown渲染失败', 'error');
+            }
+        }
+        
+        function testRealExample() {
+            const realExample = `# 世界奇观的历史
+
+你好！关于"世界奇观的历史"，这是一个十分有趣的话题。世界奇观是指那些被人类历史上或是外在环境中一些令人敬畏的伟大建筑、自然景观工程奇迹。我们可以从几个不同的角度来了解它们的历史：
+
+## 古代世界七大奇迹
+
+**古代世界七大奇迹**（The Seven Wonders of the Ancient World）这是最早被记录的世界奇观之一，由古希腊历史学家安提帕特在约公元前2世纪左右人类建造的七个最伟大的建筑工程，这些奇观位于地中海区域。
+
+### 古代七大奇迹包括：
+
+1. **吉萨大金字塔**（埃及）- 建于公元前2580年-前2560年，是唯一一座至今的古代奇迹
+2. **巴比伦空中花园**（今伊拉克）- 据百家争鸣存在争议，但传说中和古巴比伦国王尼布甲尼撒二世其妻子所建
+3. **阿尔忒弥斯神庙**（奥林匹亚 今土耳其）- 纪念月亮与野兽女神和与狩猎女神，全文耳其
+4. **奥林匹亚宙斯巨像**（古希腊）- 展现古代雕塑艺术顶峰和宗教信仰的神圣象征
+5. **摩索拉斯王陵墓**（哈利卡纳索斯，今土耳其）- 陵墓（Mausoleum）一词由此而来
+6. **罗德岛太阳神巨像**（罗德岛，今希腊）- 曾是进出港口的地标
+7. **亚历山大灯塔**（法罗斯岛，埃及）- 曾是航海导航的重要设施
+
+---
+
+## 现代世界七大奇迹
+
+**现代世界七大奇迹**（New7Wonders of the World）2000年，瑞士人贝纳·韦伯发起了一项全球投票活动，评选新七大奇迹。2007年公布结果：
+
+1. **中国长城**
+2. **约旦佩特拉古城**
+3. **巴西基督救世主雕像**（玛瑙纳）
+4. **秘鲁马丘比丘古城**
+5. **墨西哥奇琴伊察玛雅金字塔**
+6. **印度泰姬陵**
+7. **意大利罗马斗兽场**
+
+这些奇观代表了人类建造的奇迹，展示了各种不同的文化、还有各种神奇的象征意义。
+
+通过这些介绍的历史背景，建造这些历史文化奇观！需要我们更深入讲解介绍哪个呢？😊`;
+            
+            document.getElementById('markdownInput').value = realExample;
+            testMarkdown();
+            showToast('已加载实际AI回答示例', 'info');
+        }
+        
+        function clearOutput() {
+            document.getElementById('markdownOutput').innerHTML = '<p class="text-muted">输出已清空，请重新测试。</p>';
+            showToast('输出已清空', 'warning');
+        }
+        
+        function showToast(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' : 
+                              type === 'error' ? 'alert-danger' : 
+                              type === 'warning' ? 'alert-warning' : 'alert-info';
+            
+            const toast = document.createElement('div');
+            toast.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
+            toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            toast.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 3000);
+        }
+        
+        // 页面加载完成后自动渲染示例
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                testMarkdown();
+            }, 500);
+        });
+    </script>
+</body>
+</html> 
