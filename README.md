@@ -8,14 +8,68 @@
 - 智能问答功能
 - 课程管理系统
 - Markdown笔记功能
+  - 实时预览
+  - 本地存储
+  - 云端同步
+  - 权限管理
 - 学习进度追踪
 
 ## 技术栈
 
-- 前端：Bootstrap 5, JavaScript
+- 前端：Bootstrap 5, JavaScript, EasyMDE
 - 后端：Spring Boot, JPA
 - 数据库：MySQL
 - AI集成：通义千问API
+
+## 功能模块
+
+### Markdown笔记功能
+
+#### 后端实现
+- `Note.java`: 笔记实体类，包含标题、内容、创建时间等字段
+- `NoteRepository.java`: 数据访问接口，提供基本的CRUD操作
+- `NoteService.java`: 业务逻辑层，处理笔记的增删改查
+- `NoteController.java`: REST API接口，提供HTTP接口
+
+#### 前端实现
+- 使用EasyMDE作为Markdown编辑器
+- 实时预览功能
+- 笔记列表管理
+- 本地存储支持
+
+#### API接口
+```java
+GET /api/notes - 获取笔记列表
+POST /api/notes - 创建新笔记
+GET /api/notes/{id} - 获取特定笔记
+PUT /api/notes/{id} - 更新笔记
+DELETE /api/notes/{id} - 删除笔记
+```
+
+#### 数据库结构
+```sql
+CREATE TABLE notes (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    title VARCHAR(255),
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+
+#### 安全性
+- 所有API都需要认证
+- 笔记访问权限验证
+- CORS配置已添加
+
+#### 待优化功能
+- [ ] 笔记分类功能
+- [ ] 笔记分享功能
+- [ ] 笔记导出功能
+- [ ] 云端同步
+- [ ] 富文本编辑功能
 
 ## 快速开始
 
