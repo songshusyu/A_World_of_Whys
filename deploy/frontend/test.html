@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索功能测试</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .module-card { margin-bottom: 1rem; }
+        .loading-spinner { text-align: center; padding: 2rem; }
+        .error-message { color: red; margin: 1rem 0; }
+        .success-message { color: green; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>🧪 搜索功能测试页面</h2>
+        
+        <!-- 搜索区域 -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput" 
+                           placeholder="输入搜索关键词，如：如何创作一首音乐" value="如何创作一首音乐">
+                    <button class="btn btn-primary" id="searchBtn">🔍 搜索</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 连接状态 -->
+        <div id="connectionStatus" class="alert alert-info">
+            🔄 检查服务器连接状态...
+        </div>
+
+        <!-- 搜索结果 -->
+        <div id="searchResults"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class SearchTester {
+            constructor() {
+                this.apiBaseUrl = 'http://localhost:8080/api';
+                this.init();
+            }
+
+            init() {
+                // 绑定事件
+                document.getElementById('searchBtn').addEventListener('click', () => {
+                    const keyword = document.getElementById('searchInput').value;
+                    this.testSearch(keyword);
+                });
+
+                // 回车搜索
+                document.getElementById('searchInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const keyword = e.target.value;
+                        this.testSearch(keyword);
+                    }
+                });
+
+                // 测试连接
+                this.testConnection();
+            }
+
+            async testConnection() {
+                const statusEl = document.getElementById('connectionStatus');
+                statusEl.innerHTML = '🔄 正在检查后端连接...';
+
+                try {
+                    // 尝试连接后端健康检查接口
+                    const response = await fetch(`${this.apiBaseUrl}/search/trending`, {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        statusEl.className = 'alert alert-success';
+                        statusEl.innerHTML = '✅ 后端连接正常！可以开始测试搜索功能。';
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (error) {
+                    statusEl.className = 'alert alert-danger';
+                    statusEl.innerHTML = `❌ 后端连接失败: ${error.message}<br>
+                                        📝 请确保后端服务器在8080端口运行<br>
+                                        🔧 可以先测试前端功能的模拟数据`;
+                    
+                    // 显示模拟数据按钮
+                    statusEl.innerHTML += `<br><button class="btn btn-warning mt-2" onclick="searchTester.showMockData()">🎭 显示模拟数据</button>`;
+                }
+            }
+
+            async testSearch(keyword) {
+                if (!keyword.trim()) {
+                    alert('请输入搜索关键词');
+                    return;
+                }
+
+                const resultsEl = document.getElementById('searchResults');
+                resultsEl.innerHTML = `
+                    <div class="loading-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">正在搜索"${keyword}"...</p>
+                    </div>
+                `;
+
+                try {
+                    const response = await fetch(
+                        `${this.apiBaseUrl}/search/modules?keyword=${encodeURIComponent(keyword)}&page=0&size=6`,
+                        {
+                            method: 'GET',
+                            headers: { 'Accept': 'application/json' }
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.success && result.data) {
+                        this.displayResults(result.data, keyword);
+                    } else {
+                        throw new Error(result.message || '搜索失败');
+                    }
+
+                } catch (error) {
+                    resultsEl.innerHTML = `
+                        <div class="alert alert-danger">
+                            <h5>❌ 搜索失败</h5>
+                            <p><strong>错误信息:</strong> ${error.message}</p>
+                            <p><strong>可能原因:</strong></p>
+                            <ul>
+                                <li>后端服务器未启动（检查8080端口）</li>
+                                <li>CORS跨域问题</li>
+                                <li>网络连接问题</li>
+                            </ul>
+                            <button class="btn btn-warning" onclick="searchTester.showMockData('${keyword}')">🎭 查看模拟结果</button>
+                        </div>
+                    `;
+                }
+            }
+
+            displayResults(modules, keyword) {
+                const resultsEl = document.getElementById('searchResults');
+                
+                if (!modules.length) {
+                    resultsEl.innerHTML = `
+                        <div class="alert alert-warning">
+                            <h5>📝 没有找到相关课程</h5>
+                            <p>关键词"${keyword}"没有匹配的学习模块</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const cardsHTML = modules.map(module => `
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="mb-0">📚 ${module.title}</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">${module.description}</p>
+                                <div class="mb-2">
+                                    ${module.tags.map(tag => `<span class="badge bg-secondary me-1">${tag}</span>`).join('')}
+                                </div>
+                                <small class="text-muted">
+                                    ⏱️ ${module.estimatedTime} | 
+                                    ⭐ ${module.rating} (${module.reviewCount}条评价)
+                                </small>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm w-100">▶️ 开始学习</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                resultsEl.innerHTML = `
+                    <div class="alert alert-success">
+                        <h5>✅ 搜索成功！</h5>
+                        <p>找到 <strong>${modules.length}</strong> 个关于"${keyword}"的课程</p>
+                    </div>
+                    <div class="row">
+                        ${cardsHTML}
+                    </div>
+                `;
+            }
+
+            showMockData(keyword = '如何创作一首音乐') {
+                // 模拟音乐创作相关的学习模块
+                const mockModules = [
+                    {
+                        moduleId: 'music-theory-basics',
+                        title: '音乐理论基础',
+                        description: '学习音乐、和弦、节奏等基础知识，奠定音乐创作基础。',
+                        difficulty: 'beginner',
+                        category: 'music',
+                        estimatedTime: '3小时',
+                        tags: ['音乐理论', '基础', '入门'],
+                        rating: 4.8,
+                        reviewCount: 156
+                    },
+                    {
+                        moduleId: 'creative-inspiration',
+                        title: '创作灵感与构思',
+                        description: '激发创作灵感，构建旋律和和弦进行，形成音乐主题。',
+                        difficulty: 'intermediate',
+                        category: 'music',
+                        estimatedTime: '2.5小时',
+                        tags: ['创作', '灵感', '旋律'],
+                        rating: 4.6,
+                        reviewCount: 124
+                    },
+                    {
+                        moduleId: 'composition-techniques',
+                        title: '编曲与乐器运用',
+                        description: '掌握编曲技巧，学习乐器音色与搭配，丰富音乐作品。',
+                        difficulty: 'intermediate',
+                        category: 'music',
+                        estimatedTime: '4小时',
+                        tags: ['编曲', '乐器', '音色'],
+                        rating: 4.7,
+                        reviewCount: 98
+                    },
+                    {
+                        moduleId: 'recording-production',
+                        title: '录音与后期制作',
+                        description: '了解录音技术，学习音频编辑与混音，完成音乐作品。',
+                        difficulty: 'advanced',
+                        category: 'music',
+                        estimatedTime: '5小时',
+                        tags: ['录音', '后期', '混音'],
+                        rating: 4.5,
+                        reviewCount: 87
+                    }
+                ];
+
+                this.displayResults(mockModules, keyword);
+                
+                // 添加提示
+                const resultsEl = document.getElementById('searchResults');
+                resultsEl.insertAdjacentHTML('afterbegin', `
+                    <div class="alert alert-info">
+                        <h6>🎭 这是模拟数据</h6>
+                        <p>由于后端服务器未连接，显示的是前端模拟的搜索结果。实际部署时，这些数据将由后端API动态生成。</p>
+                    </div>
+                `);
+            }
+        }
+
+        // 初始化测试器
+        const searchTester = new SearchTester();
+    </script>
+</body>
+</html> 

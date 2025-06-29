@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试无HTTP服务器运行 - A World of Whys</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .log-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .error { color: #dc3545; }
+        .success { color: #28a745; }
+        .info { color: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="card">
+            <div class="card-header">
+                <h3>🧪 测试：删除start-server.py后的运行状态</h3>
+                <p class="mb-0">此页面测试在没有HTTP服务器的情况下（file://协议），前端是否能正常调用后端API</p>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <button id="testApiBtn" class="btn btn-primary">🔍 测试API连接</button>
+                        <button id="testSearchBtn" class="btn btn-success">🤖 测试AI问答</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-info mb-0">
+                            <strong>当前协议:</strong> <span id="currentProtocol"></span><br>
+                            <strong>后端地址:</strong> http://localhost:8080
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="questionInput" class="form-label">测试问题:</label>
+                    <input type="text" class="form-control" id="questionInput" value="什么是人工智能？" placeholder="输入测试问题...">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="logArea" class="form-label">测试日志:</label>
+                    <div id="logArea" class="log-area"></div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <h6>⚠️ 预期结果：</h6>
+                    <ul class="mb-0">
+                        <li><strong>如果直接双击打开此文件（file://协议）</strong>：API调用会失败，出现CORS错误</li>
+                        <li><strong>如果通过HTTP服务器访问（http://协议）</strong>：API调用正常</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 日志函数
+        function log(message, type = 'info') {
+            const logArea = document.getElementById('logArea');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+            logArea.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+
+        // 显示当前协议
+        document.getElementById('currentProtocol').textContent = window.location.protocol;
+
+        // 测试API连接
+        document.getElementById('testApiBtn').addEventListener('click', async () => {
+            log('开始测试API连接...', 'info');
+            
+            try {
+                const response = await fetch('http://localhost:8080/api/status', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ API连接成功！响应: ${JSON.stringify(data)}`, 'success');
+                } else {
+                    log(`❌ API连接失败！状态码: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ API连接异常: ${error.message}`, 'error');
+                if (error.message.includes('CORS')) {
+                    log('💡 这是CORS跨域错误，需要HTTP服务器才能解决', 'error');
+                }
+            }
+        });
+
+        // 测试AI问答
+        document.getElementById('testSearchBtn').addEventListener('click', async () => {
+            const question = document.getElementById('questionInput').value;
+            if (!question.trim()) {
+                log('❌ 请输入测试问题', 'error');
+                return;
+            }
+            
+            log(`开始测试AI问答: "${question}"`, 'info');
+            
+            try {
+                const encodedQuestion = encodeURIComponent(question);
+                const response = await fetch(`http://localhost:8080/api/ask?q=${encodedQuestion}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ AI问答成功！`, 'success');
+                    log(`🤖 AI回答: ${data.answer ? data.answer.substring(0, 100) + '...' : '无回答内容'}`, 'info');
+                } else {
+                    log(`❌ AI问答失败！状态码: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ AI问答异常: ${error.message}`, 'error');
+                if (error.message.includes('CORS')) {
+                    log('💡 这是CORS跨域错误，需要HTTP服务器才能解决', 'error');
+                }
+            }
+        });
+
+        // 页面加载时自动运行一次测试
+        window.addEventListener('load', () => {
+            log('页面加载完成，开始自动测试...', 'info');
+            log(`当前访问协议: ${window.location.protocol}`, 'info');
+            log(`当前访问地址: ${window.location.href}`, 'info');
+            
+            // 延迟1秒后自动测试
+            setTimeout(() => {
+                document.getElementById('testApiBtn').click();
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
