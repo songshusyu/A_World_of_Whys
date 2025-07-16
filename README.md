@@ -117,5 +117,4 @@ python start-server.py
 
 ## 联系方式
 
-- 作者：徐鹤松
 - GitHub：https://github.com/songshusyu 
