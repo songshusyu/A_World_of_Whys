@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学习版块 - A World of Whys</title>
+    <title>治愈版块 - 心灵花园</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +13,85 @@
     <!-- 自定义CSS -->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/topic-modules.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
+    <style>
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary {
+            border-color: #22c55e;
+            color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #22c55e;
+            border-color: #22c55e;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            padding: 40px 0;
+        }
+        
+        .modules-section {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+        }
+        
+        .loading-container, .error-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .tips-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border: 2px solid #d1fae5;
+        }
+        
+        .tip-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-radius: 10px;
+            border: 1px solid #d1fae5;
+            transition: all 0.3s ease;
+        }
+        
+        .tip-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.2);
+            border-color: #22c55e;
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,9 +99,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="../index.html">
-                <span class="brand-icon">🐱</span>
-                <span class="brand-text">A World of Whys</span>
-                <small class="brand-subtitle">十万个为什么</small>
+                <span class="brand-icon">🌿</span>
+                <span class="brand-text">心灵花园</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -32,16 +111,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html"><i class="bi bi-house-door"></i> 首页</a>
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="learn.html"><i class="bi bi-book"></i> 学习中心</a>
+                        <a class="nav-link active" href="learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> 关于我们</a>
+                        <a class="nav-link" href="Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
             </div>
@@ -57,12 +142,12 @@
                     <div class="col-md-8">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="../index.html">首页</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">学习版块</li>
+                                <li class="breadcrumb-item"><a href="../index.html">温暖首页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">治愈版块</li>
                             </ol>
                         </nav>
-                        <h1 class="topic-title" id="topicTitle">正在加载...</h1>
-                        <p class="topic-description">选择学习版块，开始您的知识探索之旅</p>
+                        <h1 class="topic-title" id="topicTitle">🌿 正在加载...</h1>
+                        <p class="topic-description">选择治愈版块，开始您的心灵温暖疗愈之旅</p>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <button class="btn btn-outline-primary" onclick="window.history.back()">
@@ -80,9 +165,9 @@
                 <div id="loadingState" class="loading-container">
                     <div class="loading-spinner">
                         <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">正在生成学习版块...</span>
+                            <span class="visually-hidden">正在生成治愈版块...</span>
                         </div>
-                        <p class="loading-text"></p>
+                        <p class="loading-text">🌱 AI正在温暖生成治愈版块...</p>
                     </div>
                 </div>
 
@@ -90,7 +175,7 @@
                 <div id="errorState" class="error-container d-none">
                     <div class="alert alert-danger" role="alert">
                         <h5 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> 生成失败</h5>
-                        <p class="mb-0" id="errorMessage">生成学习版块时遇到问题，请稍后重试。</p>
+                        <p class="mb-0" id="errorMessage">生成治愈版块时遇到问题，请稍后重试。</p>
                         <hr>
                         <button class="btn btn-outline-danger btn-sm" onclick="retryLoadModules()">
                             <i class="bi bi-arrow-clockwise"></i> 重新生成
@@ -107,33 +192,33 @@
             </div>
         </section>
 
-        <!-- 学习提示 -->
+        <!-- 治愈提示 -->
         <section class="learning-tips">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="tips-card">
-                            <h3><i class="bi bi-lightbulb"></i> 学习提示</h3>
+                            <h3><i class="bi bi-lightbulb-fill text-warning"></i> 🌸 治愈提示</h3>
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="tip-item">
-                                        <div class="tip-icon">📚</div>
-                                        <h5>循序渐进</h5>
-                                        <p>从基础版块开始，逐步深入高级内容</p>
+                                        <div class="tip-icon">🌱</div>
+                                        <h5>温柔开始</h5>
+                                        <p>从基础版块开始，逐步深入高级治愈内容</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="tip-item">
-                                        <div class="tip-icon">🎯</div>
-                                        <h5>专注学习</h5>
-                                        <p>每个版块都有4章20讲的完整内容</p>
+                                        <div class="tip-icon">�</div>
+                                        <h5>专注治愈</h5>
+                                        <p>每个版块都有4章20讲的完整温暖内容</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="tip-item">
-                                        <div class="tip-icon">🚀</div>
-                                        <h5>实践应用</h5>
-                                        <p>理论结合实践，巩固学习成果</p>
+                                        <div class="tip-icon">🌻</div>
+                                        <h5>实践成长</h5>
+                                        <p>理论结合实践，巩固温暖治愈成果</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,12 +234,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>A World of Whys</h5>
-                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                    <h5>🌿 心灵花园</h5>
+                    <p class="text-muted">新一代温暖交互式心理治愈引擎，让疗愈变得更加智能和温暖。</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        © 2024 A World of Whys. 探索无限可能.
+                        © 2025 心灵花园. 💚 探索无限温暖可能 💚
                     </p>
                 </div>
             </div>

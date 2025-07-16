@@ -4,14 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A World of Whys - 十万个为什么 | 新一代交互式知识学习引擎</title>
+    <title>治愈助手 - AI温暖心理疗愈平台 | 专业心理治疗与情感支持</title>
 
-    <!-- Bootstrap 5.3 CSS -->
+    <!-- Bootstrap 5                                                  <div class="topic-item" data-topic="睡眠质量改善">
+                                <div class="topic-icon">🌙</div>
+                                <div class="topic-content">
+                                    <h4>🌙 睡眠质量温暖改善</h4>
+                                    <p>告别失眠困扰，学会创造安心舒适的温暖睡眠环境。</p>
+                                </div>
+                            </div>div class="topic-item" data-topic="抑郁情绪疏导">
+                                <div class="topic-icon">🌻</div>
+                                <div class="topic-content">
+                                    <h4>🌻 抑郁情绪阳光疗愈</h4>
+                                    <p>专业温暖指导帮助你走出低谷，重新拥抱生活的美好与希望。</p>
+                                </div>
+                            </div>-->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <!-- 自定义CSS -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
+    <style>
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+            --bs-info: #0ea5e9;
+            --bs-warning: #eab308;
+            --bs-danger: #dc2626;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+        
+        .badge {
+            border-radius: 15px;
+            padding: 8px 16px;
+        }
+        
+        .bg-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+        }
+        
+        .bg-success {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+        }
+        
+        .bg-info {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+        }
+        
+        .text-primary {
+            color: #16a34a !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            padding: 60px 0;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .search-section {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            padding: 40px 0;
+        }
+        
+        .topic-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 2px solid #d1fae5;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .topic-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.2);
+            border-color: #22c55e;
+        }
+        
+        .search-input {
+            border: 2px solid #d1fae5;
+            border-radius: 25px;
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+        
+        .search-input:focus {
+            border-color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,9 +130,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <span class="brand-icon">🐱</span>
-                <span class="brand-text">A World of Whys</span>
-                <small class="brand-subtitle">十万个为什么</small>
+                <span class="brand-icon">🌻</span>
+                <span class="brand-text">治愈助手</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -31,16 +142,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="./index.html"><i class="bi bi-house-door"></i> 首页</a>
+                        <a class="nav-link active" href="./index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                        <a class="nav-link" href="./pages/ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/learn.html"><i class="bi bi-book"></i> 学习中心</a>
+                        <a class="nav-link" href="./pages/learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/about.html"><i class="bi bi-info-circle"></i> 关于我们</a>
+                        <a class="nav-link" href="./pages/Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
             </div>
@@ -54,12 +171,12 @@
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h1 class="hero-title">新一代交互式知识学习引擎</h1>
-                        <p class="hero-subtitle">探索无限可能，解答心中疑问</p>
+                        <h1 class="hero-title">🌿 AI温暖治愈助手 🌿</h1>
+                        <p class="hero-subtitle">用爱滋养心灵，让温暖治愈创伤，在这里找到内心的宁静与力量</p>
                         <div class="hero-badges">
-                            <span class="badge bg-primary">AI驱动</span>
-                            <span class="badge bg-success">实时问答</span>
-                            <span class="badge bg-info">个性化学习</span>
+                            <span class="badge bg-primary">🤗 AI温暖陪伴</span>
+                            <span class="badge bg-success">🌙 24小时守护</span>
+                            <span class="badge bg-info"> 专业治愈方案</span>
                         </div>
                     </div>
                 </div>
@@ -73,15 +190,15 @@
                     <div class="col-lg-8">
                         <div class="search-container">
                             <div class="search-input-group">
-                                <input type="text" class="form-control search-input" placeholder="请输入你的问题..."
+                                <input type="text" class="form-control search-input" placeholder="💚 分享你的心情故事，或倾诉内心的困扰..."
                                     id="mainSearchInput">
                                 <button class="btn btn-primary search-btn" type="button" id="mainSearchBtn">
-                                    <i class="bi bi-search"></i> 开始学习
+                                    <i class="bi bi-heart-fill"></i> 开始治愈之旅
                                 </button>
                             </div>
                             <p class="search-hint">
-                                <i class="bi bi-lightbulb"></i>
-                                尝试输入人工智能相关的问题，或者选择下方推荐主题
+                                <i class="bi bi-lightbulb-fill text-warning"></i>
+                                🌱 温柔分享你的情感困扰，或选择下方心灵治愈主题，让我们一起成长
                             </p>
                         </div>
                     </div>
@@ -94,8 +211,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center mb-5">
-                        <h2 class="section-title">热门推荐</h2>
-                        <p class="section-subtitle">精选学习主题，开启知识探索之旅</p>
+                        <h2 class="section-title">🌿 心灵治愈花园 🌿</h2>
+                        <p class="section-subtitle">专业心理治愈内容，用温暖的力量帮助你重拾内心平静与喜悦</p>
                     </div>
                 </div>
 
@@ -103,38 +220,38 @@
                     <!-- 左侧推荐 -->
                     <div class="col-lg-6">
                         <h3 class="topics-group-title">
-                            <i class="bi bi-star-fill text-warning"></i> 好奇推荐
+                            <i class="bi bi-heart-fill text-success"></i> 💖情感温暖治愈
                         </h3>
                         <div class="topics-list">
-                            <div class="topic-item" data-topic="机器学习">
-                                <div class="topic-icon">🤖</div>
+                            <div class="topic-item" data-topic="焦虑情绪管理">
+                                <div class="topic-icon">🌼</div>
                                 <div class="topic-content">
-                                    <h4>机器学习</h4>
-                                    <p>探索人工智能的核心，了解机器如何学习。</p>
+                                    <h4>焦虑情绪温柔疏导</h4>
+                                    <p>学会识别和缓解焦虑，用温暖的拥抱重获内心的平静与安宁。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="世界奇观的历史">
-                                <div class="topic-icon">🏛️</div>
+                            <div class="topic-item" data-topic="抑郁情绪疏导">
+                                <div class="topic-icon">🌻</div>
                                 <div class="topic-content">
-                                    <h4>世界奇观的历史</h4>
-                                    <p>穿越时空，探索人类文明的伟大奇迹。</p>
+                                    <h4>抑郁情绪疏导</h4>
+                                    <p>专业指导帮助你走出低谷，重新拥抱生活的美好。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="西游记中国古代文学史中的意义">
-                                <div class="topic-icon">📚</div>
+                            <div class="topic-item" data-topic="压力释放技巧">
+                                <div class="topic-icon">🍀</div>
                                 <div class="topic-content">
-                                    <h4>西游记中国古代文学史中的意义</h4>
-                                    <p>深入理解古典文学的深刻内涵和文化价值。</p>
+                                    <h4>压力温柔释放技巧</h4>
+                                    <p>掌握有效的压力管理方法，让身心得到真正的放松与治愈。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="如何创作一首音乐">
-                                <div class="topic-icon">🎵</div>
+                            <div class="topic-item" data-topic="睡眠质量改善">
+                                <div class="topic-icon">🌙</div>
                                 <div class="topic-content">
-                                    <h4>如何创作一首音乐</h4>
-                                    <p>从灵感到作品，掌握音乐创作的艺术。</p>
+                                    <h4>睡眠质量改善</h4>
+                                    <p>告别失眠困扰，学会创造安心舒适的睡眠环境。</p>
                                 </div>
                             </div>
                         </div>
@@ -143,38 +260,38 @@
                     <!-- 右侧推荐 -->
                     <div class="col-lg-6">
                         <h3 class="topics-group-title">
-                            <i class="bi bi-fire text-danger"></i> 大家都在搜
+                            <i class="bi bi-tree-fill text-success"></i> 🌱 心灵温暖成长
                         </h3>
                         <div class="topics-list">
-                            <div class="topic-item" data-topic="人工智能">
-                                <div class="topic-icon">🧠</div>
+                            <div class="topic-item" data-topic="自我接纳与成长">
+                                <div class="topic-icon">🌺</div>
                                 <div class="topic-content">
-                                    <h4>人工智能</h4>
-                                    <p>人工智能如何改变我们的生活和工作方式。</p>
+                                    <h4> 自我接纳与温暖成长</h4>
+                                    <p>学会爱自己，温柔接纳不完美，在成长中寻找真实美好的自我。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="Python在数据分析中的应用">
-                                <div class="topic-icon">🐍</div>
+                            <div class="topic-item" data-topic="人际关系改善">
+                                <div class="topic-icon">🤗</div>
                                 <div class="topic-content">
-                                    <h4>Python在数据分析中的应用</h4>
-                                    <p>Python编程，数据科学，机器学习，可视化。</p>
+                                    <h4>人际关系温暖改善</h4>
+                                    <p>建立健康的人际边界，用心创造和谐美好的温暖人际关系。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="摄影法">
-                                <div class="topic-icon">📸</div>
+                            <div class="topic-item" data-topic="正念冥想练习">
+                                <div class="topic-icon">🧘‍♀️</div>
                                 <div class="topic-content">
-                                    <h4>摄影法</h4>
-                                    <p>掌握摄影技巧，用镜头记录美好瞬间。</p>
+                                    <h4>正念冥想温柔练习</h4>
+                                    <p>通过温暖的冥想练习，培养内在觉察，获得心灵的宁静与平和。</p>
                                 </div>
                             </div>
 
-                            <div class="topic-item" data-topic="如何研究一个基础web基础的搭建">
-                                <div class="topic-icon">🌐</div>
+                            <div class="topic-item" data-topic="情感表达与沟通">
+                                <div class="topic-icon">💬</div>
                                 <div class="topic-content">
-                                    <h4>如何研究一个基础web基础的搭建</h4>
-                                    <p>Web开发基础，从零开始构建现代网站。</p>
+                                    <h4>情感表达与温暖沟通</h4>
+                                    <p>学会健康地表达情感，建立深度有效的温暖沟通方式。</p>
                                 </div>
                             </div>
                         </div>
@@ -189,12 +306,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>A World of Whys</h5>
-                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                    <h5>🌿 治愈助手</h5>
+                    <p class="text-muted">AI温暖心理疗愈平台，提供专业的心理治愈支持，让每一颗心灵都能找到属于自己的宁静、温暖与力量。</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        © 2024 A World of Whys. 探索无限可能.
+                        © 2025 治愈助手. 💖 温暖陪伴，专业治愈，爱与成长 💖
                     </p>
                 </div>
             </div>

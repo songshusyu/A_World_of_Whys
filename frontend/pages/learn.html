@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学习中心 - A World of Whys</title>
+    <title>治愈课程 - 治愈助手</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,47 @@
 
     <!-- 自定义CSS -->
     <link href="../css/style.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
     <style>
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary {
+            border-color: #22c55e;
+            color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #22c55e;
+            border-color: #22c55e;
+        }
+        
         .learning-container {
             min-height: calc(100vh - 180px);
         }
@@ -20,13 +60,16 @@
         .course-card {
             border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             margin-bottom: 20px;
+            border: 2px solid #d1fae5;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
         }
 
         .course-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
         }
 
         .course-image {
@@ -35,11 +78,12 @@
         }
 
         .progress-card {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border: 2px solid #d1fae5;
         }
 
         .achievement-badge {
@@ -50,24 +94,27 @@
             align-items: center;
             justify-content: center;
             margin: 10px;
-            background: #f8f9fa;
-            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, #d1fae5 0%, #bbf7d0 100%);
+            transition: all 0.3s ease;
+            border: 2px solid #22c55e;
         }
 
         .achievement-badge:hover {
             transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
         }
 
         .achievement-badge i {
             font-size: 2rem;
-            color: #0d6efd;
+            color: #16a34a;
         }
 
         .learning-stats {
             padding: 15px;
             border-radius: 10px;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
             margin-bottom: 15px;
+            border: 1px solid #d1fae5;
         }
 
         .topic-list {
@@ -79,51 +126,61 @@
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
-            background: white;
-            border: 1px solid #dee2e6;
-            transition: background-color 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #d1fae5;
+            transition: all 0.3s ease;
         }
 
         .topic-item:hover {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-color: #22c55e;
         }
 
         .progress-small {
             height: 4px;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
         }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="../images/logo.png" alt="智喵学堂" height="30">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="brand-icon">🌻</span>
+                <span class="brand-text">治愈助手</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/pages/learn.html">学习</a>
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/ask.html">提问</a>
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/notes.html">笔记</a>
+                        <a class="nav-link active" href="learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/about.html">关于</a>
+                        <a class="nav-link" href="Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <button id="loginBtn" class="btn btn-outline-primary me-2" type="button">登录</button>
-                    <button id="registerBtn" class="btn btn-primary" type="button">注册</button>
-                </div>
             </div>
         </div>
     </nav>
@@ -135,42 +192,42 @@
                 <!-- 左侧学习进度 -->
                 <div class="col-lg-4">
                     <div class="progress-card">
-                        <h4><i class="bi bi-person-circle"></i> 学习概览</h4>
+                        <h4><i class="bi bi-heart-pulse-fill text-success"></i> 🌿 治愈进度</h4>
                         <div class="learning-stats mt-3">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span>总学习时长</span>
+                                <span>🌸 治愈时长</span>
                                 <span class="text-primary">12小时</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span>已完成课程</span>
+                                <span>🌻 完成课程</span>
                                 <span class="text-success">8节</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span>获得成就</span>
+                                <span>🍀 获得成就</span>
                                 <span class="text-warning">5个</span>
                             </div>
                         </div>
 
-                        <h5 class="mt-4">成就徽章</h5>
+                        <h5 class="mt-4">🌺 治愈徽章</h5>
                         <div class="d-flex flex-wrap justify-content-center">
-                            <div class="achievement-badge" title="完成第一课">
-                                <i class="bi bi-1-circle"></i>
+                            <div class="achievement-badge" title="开启温暖治愈之旅">
+                                <i class="bi bi-heart-fill"></i>
                             </div>
-                            <div class="achievement-badge" title="连续学习3天">
-                                <i class="bi bi-calendar-check"></i>
+                            <div class="achievement-badge" title="连续温暖治愈3天">
+                                <i class="bi bi-calendar-heart"></i>
                             </div>
-                            <div class="achievement-badge" title="首次提问">
-                                <i class="bi bi-chat-dots"></i>
+                            <div class="achievement-badge" title="首次情感温暖分享">
+                                <i class="bi bi-chat-heart-fill"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="progress-card">
-                        <h4><i class="bi bi-clock-history"></i> 最近学习</h4>
+                        <h4><i class="bi bi-clock-history text-success"></i> 🌙 最近治愈</h4>
                         <div class="topic-list">
                             <div class="topic-item">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h6 class="mb-0">Python基础入门</h6>
+                                    <h6 class="mb-0">🌸 焦虑情绪温柔管理</h6>
                                     <span class="badge bg-success">已完成</span>
                                 </div>
                                 <div class="progress progress-small">
@@ -179,7 +236,7 @@
                             </div>
                             <div class="topic-item">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h6 class="mb-0">数据结构基础</h6>
+                                    <h6 class="mb-0">🧘‍♀️ 正念冥想温暖练习</h6>
                                     <span class="badge bg-primary">进行中</span>
                                 </div>
                                 <div class="progress progress-small">
@@ -194,22 +251,22 @@
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-12 mb-4">
-                            <h3>推荐课程</h3>
+                            <h3>🌻 推荐温暖治愈课程</h3>
                         </div>
                         
                         <!-- 课程卡片 -->
                         <div class="col-md-6">
                             <div class="card course-card">
-                                <img src="https://picsum.photos/seed/python/400/200" class="course-image" alt="Python编程">
+                                <img src="https://picsum.photos/seed/mindfulness/400/200" class="course-image" alt="正念冥想">
                                 <div class="card-body">
-                                    <h5 class="card-title">Python编程基础</h5>
-                                    <p class="card-text">从零开始学习Python编程，包含基础语法、数据结构等内容</p>
+                                    <h5 class="card-title">🧘‍♀️ 正念冥想温暖入门</h5>
+                                    <p class="card-text">学习正念冥想的温暖技巧，培养内在觉察力，获得心灵平静</p>
                                     <div class="progress mb-3" style="height: 5px;">
                                         <div class="progress-bar" style="width: 75%"></div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">已完成 75%</small>
-                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                        <a href="#" class="btn btn-primary btn-sm">继续温暖治愈</a>
                                     </div>
                                 </div>
                             </div>
@@ -217,16 +274,16 @@
 
                         <div class="col-md-6">
                             <div class="card course-card">
-                                <img src="https://picsum.photos/seed/ai/400/200" class="course-image" alt="人工智能">
+                                <img src="https://picsum.photos/seed/anxiety/400/200" class="course-image" alt="焦虑管理">
                                 <div class="card-body">
-                                    <h5 class="card-title">人工智能导论</h5>
-                                    <p class="card-text">了解人工智能的基本概念、发展历史和应用领域</p>
+                                    <h5 class="card-title">🌸 焦虑情绪温柔管理</h5>
+                                    <p class="card-text">了解焦虑的成因，掌握有效的焦虑缓解技巧和温暖应对策略</p>
                                     <div class="progress mb-3" style="height: 5px;">
                                         <div class="progress-bar" style="width: 30%"></div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">已完成 30%</small>
-                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                        <a href="#" class="btn btn-primary btn-sm">继续温暖治愈</a>
                                     </div>
                                 </div>
                             </div>
@@ -234,16 +291,16 @@
 
                         <div class="col-md-6">
                             <div class="card course-card">
-                                <img src="https://picsum.photos/seed/algorithm/400/200" class="course-image" alt="算法">
+                                <img src="https://picsum.photos/seed/selfcare/400/200" class="course-image" alt="自我关怀">
                                 <div class="card-body">
-                                    <h5 class="card-title">算法与数据结构</h5>
-                                    <p class="card-text">深入学习常用算法和数据结构的原理与实现</p>
+                                    <h5 class="card-title">🌺 自我关怀与温暖接纳</h5>
+                                    <p class="card-text">学会善待自己，建立健康的自我关系，培养内在的温暖与力量</p>
                                     <div class="progress mb-3" style="height: 5px;">
                                         <div class="progress-bar" style="width: 45%"></div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">已完成 45%</small>
-                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                        <a href="#" class="btn btn-primary btn-sm">继续温暖治愈</a>
                                     </div>
                                 </div>
                             </div>
@@ -251,16 +308,115 @@
 
                         <div class="col-md-6">
                             <div class="card course-card">
-                                <img src="https://picsum.photos/seed/web/400/200" class="course-image" alt="Web开发">
+                                <img src="https://picsum.photos/seed/sleep/400/200" class="course-image" alt="睡眠疗愈">
                                 <div class="card-body">
-                                    <h5 class="card-title">Web开发实战</h5>
-                                    <p class="card-text">学习现代Web开发技术，从前端到后端的完整实践</p>
+                                    <h5 class="card-title">🌙 睡眠质量温暖改善</h5>
+                                    <p class="card-text">学习改善睡眠的科学方法，告别失眠，拥抱安心舒适的温暖睡眠</p>
                                     <div class="progress mb-3" style="height: 5px;">
                                         <div class="progress-bar" style="width: 15%"></div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">已完成 15%</small>
-                                        <a href="#" class="btn btn-primary btn-sm">继续学习</a>
+                                        <a href="#" class="btn btn-primary btn-sm">继续温暖治愈</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 全部课程列表 -->
+                    <div class="row mt-5">
+                        <div class="col-12 mb-4">
+                            <h3>🌱 全部温暖治愈课程</h3>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary active">💚 全部温暖课程</button>
+                                <button type="button" class="btn btn-outline-primary">🌸 情绪温暖疗愈</button>
+                                <button type="button" class="btn btn-outline-primary">🧘‍♀️ 正念冥想</button>
+                                <button type="button" class="btn btn-outline-primary">💝 自我成长</button>
+                                <button type="button" class="btn btn-outline-primary">💤 睡眠质量</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 课程列表 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course1/400/200" class="course-image" alt="压力管理">
+                                <div class="card-body">
+                                    <h5 class="card-title">🌿 压力温暖管理大师班</h5>
+                                    <p class="card-text">系统学习压力管理技巧，建立健康的生活节奏，让内心获得温暖平静</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-success">💎 推荐</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course2/400/200" class="course-image" alt="情绪调节">
+                                <div class="card-body">
+                                    <h5 class="card-title">🌸 情绪调节温暖艺术</h5>
+                                    <p class="card-text">掌握情绪调节的核心技能，学会与情绪温暖相处，培养情绪智慧</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-primary">🔥 热门</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course3/400/200" class="course-image" alt="人际关系">
+                                <div class="card-body">
+                                    <h5 class="card-title">💝 人际关系温暖建设</h5>
+                                    <p class="card-text">学习建立和维护健康的人际关系，提升沟通技巧和温暖共情能力</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-info">✨ 新课</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course4/400/200" class="course-image" alt="自信心建设">
+                                <div class="card-body">
+                                    <h5 class="card-title">🌻 自信心温暖建设</h5>
+                                    <p class="card-text">重建内在自信，克服自我怀疑，发现自己的优势和温暖潜能</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-warning">⭐ 精选</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course5/400/200" class="course-image" alt="工作生活平衡">
+                                <div class="card-body">
+                                    <h5 class="card-title">⚖️ 工作生活温暖平衡</h5>
+                                    <p class="card-text">学会平衡工作与生活，设定健康边界，创造温暖而充实的生活</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-success">💚 实用</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card course-card">
+                                <img src="https://picsum.photos/seed/course6/400/200" class="course-image" alt="创伤疗愈">
+                                <div class="card-body">
+                                    <h5 class="card-title">🕊️ 创伤温暖疗愈之路</h5>
+                                    <p class="card-text">温柔地面对和处理心理创伤，重建内在安全感和温暖力量</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-success">🌟 温暖治愈</small>
+                                        <span class="badge bg-danger">💝 深度</span>
                                     </div>
                                 </div>
                             </div>
@@ -276,12 +432,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>A World of Whys</h5>
-                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                    <h5>🌿 治愈助手</h5>
+                    <p class="text-muted">AI温暖心理疗愈平台，提供专业的心理治愈支持，陪伴你走向内心的温暖平静与成长。</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        © 2024 A World of Whys. 探索无限可能.
+                        © 2025 治愈助手. 温暖陪伴，专业治愈 💝
                     </p>
                 </div>
             </div>

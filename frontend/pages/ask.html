@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能问答 - A World of Whys</title>
+    <title>心灵对话 - 治愈助手 | AI温暖心理疗愈平台</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -12,214 +12,384 @@
 
     <!-- 自定义CSS -->
     <link href="../css/style.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
     <style>
-        /* 聊天界面样式 */
-        .chat-container {
-            height: calc(100vh - 180px);
-            display: flex;
-            flex-direction: column;
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+            --bs-info: #0ea5e9;
+            --bs-warning: #eab308;
+            --bs-danger: #dc2626;
         }
-
-        .chat-messages {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
         }
-
-        .message {
-            margin-bottom: 20px;
-            max-width: 80%;
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
         }
-
-        .message.user {
-            margin-left: auto;
+        
+        .btn-outline-primary {
+            border: 2px solid #22c55e;
+            color: #16a34a;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-
-        .message.ai {
-            margin-right: auto;
-        }
-
-        .message-content {
-            padding: 12px 16px;
-            border-radius: 15px;
-            position: relative;
-        }
-
-        .message.user .message-content {
-            background: #007bff;
+        
+        .btn-outline-primary:hover {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
             color: white;
-            border-top-right-radius: 5px;
+            transform: translateY(-2px);
         }
-
-        .message.ai .message-content {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-top-left-radius: 5px;
+        
+        .badge {
+            border-radius: 15px;
+            padding: 8px 16px;
         }
-
-        .chat-input {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #dee2e6;
+        
+        .bg-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
         }
-
-        .chat-input-group {
+        
+        .bg-success {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+        }
+        
+        .bg-info {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+        }
+        
+        .text-primary {
+            color: #16a34a !important;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+        
+        .brand-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+        
+        .brand-text {
+            font-size: 1.4rem;
+            color: #16a34a;
+            font-weight: 700;
+        }
+        
+        .brand-subtitle {
+            display: block;
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 400;
+            margin-top: -2px;
+        }
+        
+        /* 聊天功能介绍区域 */
+        .chat-intro {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1);
+            border: 1px solid #d1fae5;
+        }
+        
+        .chat-intro h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #16a34a;
+            margin-bottom: 15px;
+        }
+        
+        .chat-intro .lead {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+        
+        .chat-features {
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px;
+            margin: 15px 0;
         }
-
-        .suggestions {
-            padding: 20px;
-            background: white;
-            border-left: 1px solid #dee2e6;
-        }
-
-        .suggestion-item {
+        
+        .feature-badge {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #d1fae5;
+            border-radius: 20px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            color: #16a34a;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            transition: all 0.3s;
         }
-
-        .suggestion-item:hover {
-            background: #f8f9fa;
+        
+        .feature-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border-color: #22c55e;
         }
-
-        /* 加载动画 */
-        .typing-indicator {
-            display: none;
-            padding: 10px;
-            background: #f1f3f4;
+        
+        .feature-badge i {
+            font-size: 0.9rem;
+        }
+        
+        /* 主要内容容器 */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 聊天区域布局 */
+        .chat-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            height: calc(100vh - 160px);
+            min-height: 600px;
+        }
+        
+        /* iframe 容器样式 */
+        .chat-iframe-container {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.15);
+            border: 1px solid #d1fae5;
+        }
+        
+        .chat-iframe-container iframe {
+            width: 100%;
+            height: 100%;
             border-radius: 10px;
-            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border: 1px solid #bbf7d0;
         }
-
-        .typing-indicator span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #90949c;
+        
+        /* 提示信息样式 */
+        .chat-tips {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 10px;
+        }
+        
+        .chat-tips p {
+            margin-bottom: 5px;
+        }
+        
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .chat-intro {
+                padding: 30px;
+                margin-bottom: 25px;
+            }
+            
+            .chat-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .chat-intro .lead {
+                font-size: 1.1rem;
+            }
+            
+            .feature-badge {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .chat-layout {
+                height: calc(100vh - 180px);
+                min-height: 650px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .chat-layout {
+                grid-template-columns: 350px 1fr;
+                gap: 25px;
+                height: calc(100vh - 200px);
+                min-height: 700px;
+            }
+            
+            .chat-intro {
+                text-align: left;
+                height: fit-content;
+                position: sticky;
+                top: 100px;
+            }
+            
+            .chat-features {
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .feature-badge {
+                justify-content: flex-start;
+                width: 100%;
+            }
+        }
+        
+        /* 加载动画 */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(240, 253, 244, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            z-index: 10;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #d1fae5;
+            border-top: 3px solid #22c55e;
             border-radius: 50%;
-            margin-right: 5px;
-            animation: typing 1s infinite;
+            animation: spin 1s linear infinite;
         }
-
-        @keyframes typing {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="../images/logo.png" alt="智喵学堂" height="30">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="brand-icon">🌻</span>
+                <span class="brand-text">治愈助手</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/learn.html">学习</a>
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/pages/ask.html">提问</a>
+                        <a class="nav-link active" href="ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/notes.html">笔记</a>
+                        <a class="nav-link" href="learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/about.html">关于</a>
+                        <a class="nav-link" href="Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <button id="loginBtn" class="btn btn-outline-primary me-2" type="button">登录</button>
-                    <button id="registerBtn" class="btn btn-primary" type="button">注册</button>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- 主要内容区 -->
-    <main class="container-fluid py-4">
-        <div class="row">
-            <!-- 聊天区域 -->
-            <div class="col-lg-9">
-                <div class="chat-container">
-                    <!-- 聊天消息区域 -->
-                    <div class="chat-messages" id="chatMessages">
-                        <!-- AI欢迎消息 -->
-                        <div class="message ai">
-                            <div class="message-content">
-                                <p>你好！我是智喵学堂的AI助手。我可以帮你：</p>
-                                <ul>
-                                    <li>回答各种学科问题</li>
-                                    <li>解释复杂概念</li>
-                                    <li>提供学习建议</li>
-                                    <li>分享知识见解</li>
-                                </ul>
-                                <p>请问有什么我可以帮你的吗？</p>
-                            </div>
+    <main class="container-fluid py-3">
+        <div class="main-content">
+            <div class="chat-layout">
+                <!-- 智能体功能介绍 -->
+                <div class="chat-intro">
+                    <h2 class="mb-3">🤖 腾讯AI智能体</h2>
+                    <p class="lead mb-3">集成专业心理治愈、地图服务、医疗挂号等多功能AI助手</p>
+                    
+                    <div class="chat-features">
+                        <div class="feature-badge">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                            <span>💚 专业心理治愈对话</span>
                         </div>
-                        <!-- 打字指示器 -->
-                        <div class="typing-indicator" id="typingIndicator">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <div class="feature-badge">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>🗺️ 腾讯地图MCP服务</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="bi bi-hospital-fill"></i>
+                            <span>🏥 智能医疗挂号助手</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="bi bi-clock-fill"></i>
+                            <span>🌙 24小时温暖陪伴</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="bi bi-shield-fill-check"></i>
+                            <span>🔒 隐私安全保护</span>
                         </div>
                     </div>
-
-                    <!-- 输入区域 -->
-                    <div class="chat-input">
-                        <div class="chat-input-group">
-                            <input type="text" class="form-control" id="messageInput" 
-                                   placeholder="输入你的问题..." autocomplete="off">
-                            <button class="btn btn-primary" id="sendButton">
-                                <i class="bi bi-send"></i> 发送
-                            </button>
-                        </div>
+                    
+                    <div class="chat-tips mt-3">
+                        <p>
+                            <i class="bi bi-lightbulb-fill text-warning"></i>
+                            💡 <strong>智能服务：</strong>咨询心理问题、查询地图位置、预约医疗服务
+                        </p>
+                        <p>
+                            <i class="bi bi-info-circle-fill text-primary"></i>
+                            ℹ️ 紧急心理危机干预热线：<strong>400-161-9995</strong>
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- 推荐问题区域 -->
-            <div class="col-lg-3">
-                <div class="suggestions">
-                    <h5 class="mb-3">
-                        <i class="bi bi-lightbulb"></i> 推荐问题
-                    </h5>
-                    <div class="suggestion-list">
-                        <div class="suggestion-item" data-question="什么是人工智能？它的应用领域有哪些？">
-                            <i class="bi bi-robot"></i> 人工智能及其应用
-                        </div>
-                        <div class="suggestion-item" data-question="请介绍Python编程的基础知识和应用场景。">
-                            <i class="bi bi-code-square"></i> Python编程入门
-                        </div>
-                        <div class="suggestion-item" data-question="如何提高学习效率？有什么好的学习方法推荐？">
-                            <i class="bi bi-book"></i> 高效学习方法
-                        </div>
-                        <div class="suggestion-item" data-question="数据结构与算法的重要性是什么？">
-                            <i class="bi bi-diagram-3"></i> 数据结构与算法
+                <!-- 智能体聊天界面 -->
+                <div class="chat-iframe-container" style="position: relative;">
+                    <div class="loading-overlay" id="chatLoading">
+                        <div class="text-center">
+                            <div class="loading-spinner mb-2"></div>
+                            <p class="text-muted mb-0">🤖 正在连接腾讯AI智能体...</p>
                         </div>
                     </div>
-
-                    <h5 class="mb-3 mt-4">
-                        <i class="bi bi-clock-history"></i> 最近问题
-                    </h5>
-                    <div id="recentQuestions" class="suggestion-list">
-                        <!-- 最近问题将通过JavaScript动态添加 -->
-                    </div>
+                    <iframe src="../chat/index.html" 
+                            style="width:100%;height:100%;border:none;" 
+                            allowfullscreen
+                            title="腾讯AI智能体心理治愈助手"
+                            id="chatIframe">
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -227,119 +397,118 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <!-- 导航处理 -->
     <script src="../js/navigation.js"></script>
-    <!-- API模块 -->
-    <script src="../js/api.js"></script>
-    <!-- 页面特定的JavaScript -->
+    <!-- iframe 增强脚本 -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageInput = document.getElementById('messageInput');
-            const sendButton = document.getElementById('sendButton');
-            const typingIndicator = document.getElementById('typingIndicator');
-            const recentQuestions = document.getElementById('recentQuestions');
-
-            // 存储最近的问题
-            let recentQuestionsArray = JSON.parse(localStorage.getItem('recentQuestions') || '[]');
-
-            // 更新最近问题显示
-            function updateRecentQuestions() {
-                recentQuestions.innerHTML = recentQuestionsArray
-                    .slice(0, 5)
-                    .map(q => `
-                        <div class="suggestion-item" data-question="${q}">
-                            <i class="bi bi-arrow-return-right"></i> ${q}
-                        </div>
-                    `)
-                    .join('');
+            // iframe 和加载提示元素
+            const iframe = document.getElementById('chatIframe');
+            const loadingOverlay = document.getElementById('chatLoading');
+            
+            // 隐藏加载提示的函数
+            function hideLoading() {
+                if (loadingOverlay) {
+                    loadingOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 300);
+                }
             }
-
-            // 添加新问题到最近问题列表
-            function addToRecentQuestions(question) {
-                recentQuestionsArray = [question, ...recentQuestionsArray.filter(q => q !== question)]
-                    .slice(0, 5);
-                localStorage.setItem('recentQuestions', JSON.stringify(recentQuestionsArray));
-                updateRecentQuestions();
+            
+            // 显示加载提示的函数
+            function showLoading() {
+                if (loadingOverlay) {
+                    loadingOverlay.style.display = 'flex';
+                    loadingOverlay.style.opacity = '1';
+                }
             }
-
-            // 初始化显示最近问题
-            updateRecentQuestions();
-
-            // 添加消息到聊天界面
-            function addMessage(content, isUser = false) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
-                messageDiv.innerHTML = `
-                    <div class="message-content">
-                        ${isUser ? content : marked.parse(content)}
+            
+            // 监听 iframe 内容变化，确保正确显示
+            iframe.onload = function() {
+                console.log('腾讯AI智能体治愈助手已加载');
+                
+                // 延迟隐藏加载提示，让用户看到加载完成
+                setTimeout(() => {
+                    hideLoading();
+                    
+                    // 添加加载成功提示
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'alert alert-success alert-dismissible fade show position-fixed';
+                    successMsg.style.cssText = 'top: 20px; right: 20px; z-index: 1050; max-width: 350px;';
+                    successMsg.innerHTML = `
+                        <i class="bi bi-check-circle-fill"></i> 
+                        <strong>🤖 腾讯AI智能体已就绪</strong>
+                        <br><small>💚 您可以开始与AI治愈助手对话了</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    `;
+                    document.body.appendChild(successMsg);
+                    
+                    // 3秒后自动消失
+                    setTimeout(() => {
+                        if (successMsg.parentNode) {
+                            successMsg.remove();
+                        }
+                    }, 3000);
+                }, 800);
+            };
+            
+            // 错误处理
+            iframe.onerror = function() {
+                console.error('腾讯AI智能体加载失败');
+                hideLoading();
+                
+                iframe.style.display = 'none';
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'alert alert-warning text-center h-100 d-flex flex-column justify-content-center';
+                errorMsg.innerHTML = `
+                    <div class="mb-3">
+                        <i class="bi bi-exclamation-triangle-fill h2 text-warning"></i>
                     </div>
+                    <h5>🤖 腾讯AI智能体暂时不可用</h5>
+                    <p class="mb-3">智能治愈助手功能暂时无法连接，请稍后再试</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <button class="btn btn-primary btn-sm" onclick="location.reload()">
+                            <i class="bi bi-arrow-clockwise"></i> 重新连接
+                        </button>
+                        <a href="tel:400-161-9995" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-telephone-fill"></i> 紧急热线
+                        </a>
+                    </div>
+                    <small class="text-muted">
+                        💡 <strong>替代方案：</strong>您也可以通过其他页面的功能继续获得心理支持
+                    </small>
                 `;
-                chatMessages.insertBefore(messageDiv, typingIndicator);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            // 发送消息
-            async function sendMessage(message) {
-                if (!message.trim()) return;
-
-                // 显示用户消息
-                addMessage(message, true);
-                addToRecentQuestions(message);
-
-                // 清空输入框并禁用
-                messageInput.value = '';
-                messageInput.disabled = true;
-                sendButton.disabled = true;
-
-                // 显示正在输入指示器
-                typingIndicator.style.display = 'block';
-
-                try {
-                    // 调用API
-                    const result = await apiService.askQuestion(message);
-
-                    if (result.success) {
-                        // 显示AI回复
-                        addMessage(result.data.answer);
-                    } else {
-                        addMessage('抱歉，我遇到了一些问题。请稍后再试。');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    addMessage('抱歉，服务器出现错误。请稍后再试。');
-                } finally {
-                    // 隐藏正在输入指示器
-                    typingIndicator.style.display = 'none';
-                    // 重新启用输入
-                    messageInput.disabled = false;
-                    sendButton.disabled = false;
-                    messageInput.focus();
-                }
-            }
-
-            // 发送按钮点击事件
-            sendButton.addEventListener('click', () => {
-                sendMessage(messageInput.value);
-            });
-
-            // 输入框回车事件
-            messageInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage(messageInput.value);
-                }
-            });
-
-            // 推荐问题点击事件
-            document.querySelectorAll('.suggestion-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const question = item.getAttribute('data-question');
-                    messageInput.value = question;
-                    sendMessage(question);
+                iframe.parentNode.appendChild(errorMsg);
+            };
+            
+            // 功能徽章点击事件
+            document.querySelectorAll('.feature-badge').forEach(badge => {
+                badge.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    console.log(`点击了功能: ${text}`);
+                    
+                    // 简单的交互反馈
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-2px)';
+                    }, 150);
+                    
+                    // 给iframe发送焦点，方便用户直接开始对话
+                    iframe.focus();
                 });
+            });
+            
+            // 页面可见性变化时的处理
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    // 页面重新可见时，检查iframe状态
+                    if (iframe.style.display === 'none') {
+                        showLoading();
+                        iframe.src = iframe.src; // 重新加载iframe
+                        iframe.style.display = 'block';
+                    }
+                }
             });
         });
     </script>

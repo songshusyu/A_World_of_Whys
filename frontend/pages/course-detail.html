@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>课程详情 - A World of Whys</title>
+    <title>课程详情 - 心灵花园</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +13,108 @@
     <!-- 自定义CSS -->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/course-detail.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
+    <style>
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary {
+            border-color: #22c55e;
+            color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #22c55e;
+            border-color: #22c55e;
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            padding: 40px 0;
+        }
+        
+        .chapters-sidebar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border: 2px solid #d1fae5;
+        }
+        
+        .welcome-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #d1fae5;
+        }
+        
+        .welcome-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #d1fae5;
+            border-radius: 20px;
+            margin: 5px;
+            color: #16a34a;
+            font-weight: 500;
+        }
+        
+        .lecture-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            border: 2px solid #d1fae5;
+        }
+        
+        .content-type-tabs .nav-link {
+            border-radius: 20px;
+            margin: 0 5px;
+            border: 2px solid #d1fae5;
+            color: #16a34a;
+        }
+        
+        .content-type-tabs .nav-link.active {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            color: white;
+        }
+        
+        .loading-container {
+            text-align: center;
+            padding: 40px 20px;
+            color: #16a34a;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,9 +122,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="../index.html">
-                <span class="brand-icon">🐱</span>
-                <span class="brand-text">A World of Whys</span>
-                <small class="brand-subtitle">十万个为什么</small>
+                <span class="brand-icon">🌿</span>
+                <span class="brand-text">心灵花园</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -32,16 +134,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html"><i class="bi bi-house-door"></i> 首页</a>
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-dots"></i> 智能问答</a>
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="learn.html"><i class="bi bi-book"></i> 学习中心</a>
+                        <a class="nav-link active" href="learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle"></i> 关于我们</a>
+                        <a class="nav-link" href="Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
             </div>
@@ -57,13 +165,13 @@
                     <div class="col-md-8">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="../index.html">首页</a></li>
-                                <li class="breadcrumb-item"><a href="#" id="topicBreadcrumb">学习版块</a></li>
+                                <li class="breadcrumb-item"><a href="../index.html">温暖首页</a></li>
+                                <li class="breadcrumb-item"><a href="#" id="topicBreadcrumb">治愈版块</a></li>
                                 <li class="breadcrumb-item active" aria-current="page" id="moduleBreadcrumb">课程详情</li>
                             </ol>
                         </nav>
-                        <h1 class="course-title" id="courseTitle">正在加载...</h1>
-                        <p class="course-description">选择章节和讲次，深入学习知识内容</p>
+                        <h1 class="course-title" id="courseTitle">🌸 正在加载...</h1>
+                        <p class="course-description">选择章节和讲次，深入温暖治愈内容</p>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <button class="btn btn-outline-primary" onclick="goBack()">
@@ -81,21 +189,21 @@
                     <!-- 章节列表 -->
                     <div class="col-lg-4">
                         <div class="chapters-sidebar">
-                            <h4><i class="bi bi-list-ol"></i> 课程章节</h4>
+                            <h4><i class="bi bi-list-ol"></i> 🌿 治愈章节</h4>
                             
                             <!-- 加载状态 -->
                             <div id="chaptersLoading" class="loading-container">
                                 <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">正在加载课程结构...</span>
+                                    <span class="visually-hidden">正在加载治愈结构...</span>
                                 </div>
-                                <p class="loading-text">AI正在生成课程结构...</p>
+                                <p class="loading-text">🌱 AI正在生成治愈结构...</p>
                             </div>
 
                             <!-- 错误状态 -->
                             <div id="chaptersError" class="error-container d-none">
                                 <div class="alert alert-danger" role="alert">
                                     <h6><i class="bi bi-exclamation-triangle"></i> 加载失败</h6>
-                                    <p class="mb-0">生成课程结构时遇到问题</p>
+                                    <p class="mb-0">生成治愈结构时遇到问题</p>
                                     <button class="btn btn-outline-danger btn-sm mt-2" onclick="loadCourseStructure()">
                                         <i class="bi bi-arrow-clockwise"></i> 重试
                                     </button>
@@ -115,24 +223,24 @@
                             <!-- 欢迎状态 -->
                             <div id="welcomeState" class="welcome-container">
                                 <div class="welcome-card">
-                                    <div class="welcome-icon">📚</div>
-                                    <h3>开始您的学习之旅</h3>
-                                    <p>请从左侧选择章节和讲次，开始深入学习。</p>
+                                    <div class="welcome-icon">🌸</div>
+                                    <h3>开始您的温暖治愈之旅</h3>
+                                    <p>请从左侧选择章节和讲次，开始深入治愈。</p>
                                     <div class="welcome-features">
                                         <div class="feature-item">
-                                            <i class="bi bi-book"></i>
-                                            <span>课程内容</span>
+                                            <i class="bi bi-heart-fill"></i>
+                                            <span>治愈内容</span>
                                         </div>
                                         <div class="feature-item">
-                                            <i class="bi bi-lightbulb"></i>
-                                            <span>简化版</span>
+                                            <i class="bi bi-lightbulb-fill"></i>
+                                            <span>温柔版</span>
                                         </div>
                                         <div class="feature-item">
-                                            <i class="bi bi-question-circle"></i>
-                                            <span>测试</span>
+                                            <i class="bi bi-question-circle-fill"></i>
+                                            <span>心灵测试</span>
                                         </div>
                                         <div class="feature-item">
-                                            <i class="bi bi-arrow-up-right"></i>
+                                            <i class="bi bi-arrow-up-right-circle-fill"></i>
                                             <span>深入探索</span>
                                         </div>
                                     </div>
@@ -142,9 +250,9 @@
                             <!-- 讲次加载状态 -->
                             <div id="lectureLoading" class="loading-container d-none">
                                 <div class="spinner-border text-primary" role="status">
-                                    <span class="visually-hidden">正在生成讲次内容...</span>
+                                    <span class="visually-hidden">正在生成治愈内容...</span>
                                 </div>
-                                <p class="loading-text">AI正在生成精彩内容...</p>
+                                <p class="loading-text">🌻 AI正在生成精彩治愈内容...</p>
                             </div>
 
                             <!-- 讲次内容 -->
@@ -156,28 +264,28 @@
                                             <button class="nav-link active" id="content-tab" data-bs-toggle="pill" 
                                                     data-bs-target="#content" type="button" role="tab" 
                                                     data-content-type="COURSE">
-                                                <i class="bi bi-book"></i> 课程内容
+                                                <i class="bi bi-heart-fill"></i> 治愈内容
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="simplified-tab" data-bs-toggle="pill" 
                                                     data-bs-target="#simplified" type="button" role="tab"
                                                     data-content-type="SIMPLIFIED">
-                                                <i class="bi bi-lightbulb"></i> 简化版
+                                                <i class="bi bi-lightbulb-fill"></i> 温柔版
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="test-tab" data-bs-toggle="pill" 
                                                     data-bs-target="#test" type="button" role="tab"
                                                     data-content-type="TEST">
-                                                <i class="bi bi-question-circle"></i> 测试
+                                                <i class="bi bi-question-circle-fill"></i> 心灵测试
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="explore-tab" data-bs-toggle="pill" 
                                                     data-bs-target="#explore" type="button" role="tab"
                                                     data-content-type="ADVANCED">
-                                                <i class="bi bi-arrow-up-right"></i> 深入探索
+                                                <i class="bi bi-arrow-up-right-circle-fill"></i> 深入探索
                                             </button>
                                         </li>
                                     </ul>
@@ -197,28 +305,28 @@
                                     <div class="tab-pane fade show active" id="content" role="tabpanel">
                                         <div class="content-wrapper">
                                             <div class="content-text" id="contentText">
-                                                正在加载课程内容...
+                                                🌱 正在加载治愈内容...
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="simplified" role="tabpanel">
                                         <div class="content-wrapper">
                                             <div class="content-text" id="simplifiedText">
-                                                正在加载简化版内容...
+                                                🌸 正在加载温柔版内容...
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="test" role="tabpanel">
                                         <div class="content-wrapper">
                                             <div class="content-text" id="testText">
-                                                正在加载测试内容...
+                                                🌻 正在加载心灵测试内容...
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="explore" role="tabpanel">
                                         <div class="content-wrapper">
                                             <div class="content-text" id="exploreText">
-                                                正在加载深入探索内容...
+                                                🌿 正在加载深入探索内容...
                                             </div>
                                         </div>
                                     </div>
@@ -246,12 +354,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>A World of Whys</h5>
-                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                    <h5>🌿 心灵花园</h5>
+                    <p class="text-muted">新一代温暖交互式心理治愈引擎，让疗愈变得更加智能和温暖。</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        © 2024 A World of Whys. 探索无限可能.
+                        © 2025 心灵花园. 💚 探索无限温暖可能 💚
                     </p>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我们 - A World of Whys</title>
+    <title>关于我们 - 治愈助手</title>
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -12,23 +12,35 @@
 
     <!-- 自定义CSS -->
     <link href="../css/style.css" rel="stylesheet">
+    
+    <!-- 绿色温暖主题 -->
     <style>
+        :root {
+            --bs-primary: #22c55e;
+            --bs-primary-rgb: 34, 197, 94;
+            --bs-success: #16a34a;
+            --bs-success-rgb: 22, 163, 74;
+        }
+        
         .about-section {
             padding: 80px 0;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
         }
 
         .about-card {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+            transition: all 0.3s ease;
+            border: 2px solid #d1fae5;
         }
 
         .about-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
         }
 
         .profile-image {
@@ -37,8 +49,8 @@
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 5px solid #22c55e;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
         }
 
         .social-links {
@@ -46,14 +58,19 @@
         }
 
         .social-links a {
-            color: #6c757d;
+            color: #16a34a;
             margin: 0 10px;
             font-size: 24px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 50%;
+            background: #f0fdf4;
         }
 
         .social-links a:hover {
-            color: #0d6efd;
+            color: #ffffff;
+            background: #22c55e;
+            transform: translateY(-2px);
         }
 
         .tech-stack {
@@ -67,8 +84,10 @@
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
-            background: #e9ecef;
-            color: #495057;
+            background: linear-gradient(135deg, #d1fae5 0%, #bbf7d0 100%);
+            color: #16a34a;
+            border: 1px solid #22c55e;
+            font-weight: 500;
         }
 
         .project-features {
@@ -79,12 +98,14 @@
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
-            background: #f8f9fa;
-            transition: background-color 0.3s ease;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            transition: all 0.3s ease;
+            border-left: 4px solid #22c55e;
         }
 
         .feature-item:hover {
-            background: #e9ecef;
+            background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+            transform: translateX(5px);
         }
 
         .timeline {
@@ -94,10 +115,12 @@
 
         .timeline-item {
             padding: 20px;
-            border-left: 2px solid #0d6efd;
+            border-left: 2px solid #22c55e;
             position: relative;
             margin-left: 20px;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-radius: 8px;
         }
 
         .timeline-item::before {
@@ -108,43 +131,77 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: #0d6efd;
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%) !important;
+            border-bottom: 2px solid #d1fae5;
+        }
+        
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary {
+            border-color: #22c55e;
+            color: #22c55e;
+            border-radius: 25px;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #22c55e;
+            border-color: #22c55e;
         }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="../images/logo.png" alt="智喵学堂" height="30">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <span class="brand-icon">🌻</span>
+                <span class="brand-text">治愈助手</span>
+                <small class="brand-subtitle">AI温暖心理疗愈平台</small>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/learn.html">学习</a>
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house-heart"></i> 温暖首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/ask.html">提问</a>
+                        <a class="nav-link" href="ask.html"><i class="bi bi-chat-heart"></i> 心灵对话</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/notes.html">笔记</a>
+                        <a class="nav-link" href="learn.html"><i class="bi bi-heart-pulse"></i> 治愈课程</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/pages/about.html">关于</a>
+                        <a class="nav-link" href="Travel.html"><i class="bi bi-flower1"></i> 疗愈之旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html"><i class="bi bi-pencil-square"></i> 心情日记</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html"><i class="bi bi-info-circle-fill"></i> 关于我们</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <button id="loginBtn" class="btn btn-outline-primary me-2" type="button">登录</button>
-                    <button id="registerBtn" class="btn btn-primary" type="button">注册</button>
-                </div>
             </div>
         </div>
+    </nav>
     </nav>
 
     <!-- 主要内容区 -->
@@ -155,17 +212,17 @@
                 <div class="row justify-content-center">
                     <div class="col-md-10">
                         <div class="about-card text-center">
-                            <img src="https://avatars.githubusercontent.com/songshusyu" alt="徐鹤松" class="profile-image">
-                            <h2 class="mb-3">徐鹤松</h2>
-                            <p class="lead text-muted">北京邮电大学 计算机科学与技术专业</p>
-                            <p class="mb-4">研究兴趣：机器学习、人工智能、Web开发</p>
+                            <img src="https://avatars.githubusercontent.com/songshusyu" alt="治愈助手创始人" class="profile-image">
+                            <h2 class="mb-3">🌿 治愈助手团队</h2>
+                            <p class="lead text-muted">💚 专业心理健康AI温暖研发团队</p>
+                            <p class="mb-4">🌱 致力于：心理健康技术、AI温暖疗愈、情感支持系统研发</p>
                             
                             <div class="social-links">
                                 <a href="https://github.com/songshusyu" target="_blank" title="GitHub">
                                     <i class="bi bi-github"></i>
                                 </a>
-                                <a href="https://songshusyu.com" target="_blank" title="个人博客">
-                                    <i class="bi bi-journal-text"></i>
+                                <a href="mailto:support@healingmind.ai" target="_blank" title="联系我们">
+                                    <i class="bi bi-envelope-heart-fill"></i>
                                 </a>
                             </div>
                         </div>
@@ -180,34 +237,34 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="about-card">
-                            <h3><i class="bi bi-lightbulb"></i> 项目愿景</h3>
-                            <p class="lead">打造新一代交互式知识学习引擎</p>
-                            <p>智喵学堂致力于通过AI技术革新教育方式，让学习变得更加智能和有趣。我们希望通过技术的力量，让每个人都能享受到优质的教育资源。</p>
+                            <h3><i class="bi bi-heart-fill text-success"></i> 🌿 我们的使命</h3>
+                            <p class="lead">打造专业的AI智能心理温暖疗愈花园</p>
+                            <p>治愈助手致力于通过AI技术为每个人提供专业的心理健康支持。我们相信，每一颗心灵都值得被温柔对待，每个人都应该拥有获得心理温暖疗愈的机会。</p>
                             
                             <div class="tech-stack">
-                                <span class="tech-badge">Spring Boot</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">Bootstrap</span>
-                                <span class="tech-badge">通义千问API</span>
+                                <span class="tech-badge">🌸 心理学理论</span>
+                                <span class="tech-badge">🤖 AI温暖技术</span>
+                                <span class="tech-badge">🌙 24小时守护</span>
+                                <span class="tech-badge">💚 专业治愈</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="about-card">
-                            <h3><i class="bi bi-gear"></i> 核心功能</h3>
+                            <h3><i class="bi bi-heart-pulse-fill text-success"></i> 🌱 核心功能</h3>
                             <div class="project-features">
                                 <div class="feature-item">
-                                    <h5><i class="bi bi-robot"></i> AI智能问答</h5>
-                                    <p>基于通义千问API，提供智能、准确的问答服务</p>
+                                    <h5><i class="bi bi-chat-heart-fill"></i> 🌸 AI心灵对话</h5>
+                                    <p>基于心理学理论的智能温暖聊天，提供专业的心理支持与陪伴</p>
                                 </div>
                                 <div class="feature-item">
-                                    <h5><i class="bi bi-book"></i> 个性化学习</h5>
-                                    <p>根据学习进度和兴趣推荐合适的学习内容</p>
+                                    <h5><i class="bi bi-heart-fill"></i> 🌻 个性化温暖疗愈</h5>
+                                    <p>根据情感状态和需求推荐合适的温暖疗愈课程和练习</p>
                                 </div>
                                 <div class="feature-item">
-                                    <h5><i class="bi bi-graph-up"></i> 学习追踪</h5>
-                                    <p>记录和分析学习过程，提供学习建议</p>
+                                    <h5><i class="bi bi-graph-up-arrow"></i> 🍀 情绪温柔追踪</h5>
+                                    <p>记录和分析情绪变化，提供专业的心理健康温暖建议</p>
                                 </div>
                             </div>
                         </div>
@@ -218,19 +275,19 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="about-card">
-                            <h3><i class="bi bi-clock-history"></i> 发展历程</h3>
+                            <h3><i class="bi bi-clock-history text-success"></i> 🌿 成长历程</h3>
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <h5>2024年6月</h5>
-                                    <p>项目启动，基于智喵学堂的理念进行开发</p>
+                                    <h5>🌱 2025年6月</h5>
+                                    <p>治愈助手项目启动，基于心理健康AI温暖技术的理念进行开发</p>
                                 </div>
                                 <div class="timeline-item">
-                                    <h5>2024年6月中旬</h5>
-                                    <p>完成核心功能开发，包括AI问答系统和学习追踪</p>
+                                    <h5>🌸 2025年6月中旬</h5>
+                                    <p>完成核心功能开发，包括AI心灵对话系统和情绪温柔追踪</p>
                                 </div>
                                 <div class="timeline-item">
-                                    <h5>2024年6月底</h5>
-                                    <p>项目上线，持续优化和更新</p>
+                                    <h5>🌻 2025年6月底</h5>
+                                    <p>治愈助手平台温暖上线，为用户提供专业的心理疗愈服务</p>
                                 </div>
                             </div>
                         </div>
@@ -245,12 +302,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>A World of Whys</h5>
-                    <p class="text-muted">新一代交互式知识学习引擎，让学习变得更加智能和有趣。</p>
+                    <h5>🌿 治愈助手</h5>
+                    <p class="text-muted">AI温暖心理疗愈平台，用科技的温度守护每一颗心灵，让治愈与成长变得触手可及。</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        © 2024 A World of Whys. 探索无限可能.
+                        © 2025 治愈助手. 💚 温暖陪伴，专业治愈，爱与成长 💚
                     </p>
                 </div>
             </div>
